@@ -1,4 +1,4 @@
-from lib.device import Camera, ipCamera
+from lib.device import Camera, ipCamera, VideoFile
 from lib.processors import findFaceGetPulse
 from lib.interface import plotXY, imshow, waitKey,destroyWindow, moveWindow, resize
 import numpy as np      
@@ -16,9 +16,10 @@ class getPulseApp(object):
         #Imaging device - must be a connected camera (not an ip camera or mjpeg
         #stream)
         
-        self.camera = ipCamera(ip,
-                       user=user, 
-                       password=password)
+        # self.camera = ipCamera(ip,
+                       # user=user, 
+                       # password=password)
+self.camera = VideoFile('C:\Users\Ashok Fernandez\Desktop\PulseDetector\Youtube-Stare.mp4')
         self.w,self.h = 0,0
         
         #Containerized analysis of recieved image frames (an openMDAO assembly)

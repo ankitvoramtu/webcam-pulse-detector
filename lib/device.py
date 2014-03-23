@@ -32,3 +32,26 @@ class Camera(object):
 
     def release(self):
         self.cam.release()
+
+class VideoFile(object):
+
+    def __init__(self, filename):
+        
+        self.file = cv2.VideoCapture(filename)
+
+        _, frame = self.file.read()
+
+        if not self.file:
+            raise Exception("Couldn't open %s" % filename)
+
+
+    def get_frame(self):
+        frameReturned, frame = self.file.read()
+        
+        if frameReturned:
+            return frame
+        else: 
+            raise Exception("End of video file")
+
+    def release(self):
+        self.file.release()
